@@ -2,10 +2,10 @@
 process.env.NODE_ENV = 'test';
 
 //Require the dev-dependencies
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+const should = chai.should();
 
 chai.use(chaiHttp);
 //Our parent block
@@ -34,7 +34,6 @@ describe('Users', () => {
                 chai.request(server)
                     .post('/api/users', { firstName: '' })
                     .end((err, res) => {
-                        // console.log(res);
                         res.should.have.status(200);
                         res.body.type.should.equal('validationError');
                         done();
@@ -49,7 +48,6 @@ describe('Users', () => {
                         firstName: 'test'
                     })
                     .end((err, res) => {
-                        // console.log(res);
                         res.should.have.status(200);
                         res.body.type.should.equal('success');
                         res.body.should.be.a('object');

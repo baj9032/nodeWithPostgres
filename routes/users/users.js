@@ -25,7 +25,7 @@ users.get('/', async (req, res) => {
 
 // add new user to the db
 users.post('/', async (req, res) => {
-    let firstName = req.body['firstName'];
+    const firstName = req.body['firstName'];
 
     //parameter validation goes here
     if (firstName === undefined || firstName.toString().trim() === '') {
